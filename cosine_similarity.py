@@ -5,7 +5,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 """
-cosine similarity is a method used to distinguish between to chemically different materials 
+cosine similarity is a method used to distinguish between two FTIR spectra
 
 if its expected that they are going to be similar, need to introduce integration as metadata and compare
 
