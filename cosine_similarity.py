@@ -11,9 +11,8 @@ if its expected that they are going to be similar, need to introduce integration
 
 """
 
-
 #name the folder where the csv are
-folder=Path("/home/")
+folder=Path("/home")
 
 #store the csv files in a empty dictionary 
 store={}
@@ -33,15 +32,34 @@ for i in folder.glob("*.CSV"):
     cols=["wavenumber","absorbance"]
     data.columns=cols
 
-    #store as a dictionary 
+    #data is stored as a dictionary of pandas dataframes 
     store[name]=data
 
 
+#running just one reference one unknown query 
+#reference = store["key"]["absorbance"].values.reshape(1, -1)
+#unknown = store["key2"]["absorbance"].values.reshape(1, -1)
+
+#running one unknown against a library(dictionary) of items
+
+#name the unknown, is the dame dictionary item
+unknown=store["key in dictionary"]["absorbance"].values.reshape(1,-1)
+
+
+#loop through the library 
+#for keys and values in the dictionary
 for l,m in store.items():
-    print(l)
+    
+    #looping through the keys and values
+    #.values is needed as the data is a pandas dataframe and is pulled out as a numpy array
+    reference=m["absorbance"].values.reshape(1,-1)
 
-reference = store["key"]["absorbance"].values.reshape(1, -1)
-unknown = store["key2"]["absorbance"].values.reshape(1, -1)
+    #run the similarity
+    similarity=cosine_similarity(reference,unknown)[0,0]
+   
+    #print the item in the library and the result 
+    print(f"{l}: {similarity * 100:.2f}%")
 
-similarity = cosine_similarity(reference, unknown)[0, 0]
-print(similarity * 100)
+
+#similarity = cosine_similarity(reference, unknown)[0, 0]
+#print(similarity * 100)
