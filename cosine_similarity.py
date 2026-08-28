@@ -40,8 +40,8 @@ for i in folder.glob("*.CSV"):
 for l,m in store.items():
     print(l)
 
-reference = store["340M"]["absorbance"].values.reshape(1, -1)
-unknown = store["340_IMU"]["absorbance"].values.reshape(1, -1)
+reference = store["key"]["absorbance"].values.reshape(1, -1)
+unknown = store["key2"]["absorbance"].values.reshape(1, -1)
 
 similarity = cosine_similarity(reference, unknown)[0, 0]
 print(similarity * 100)
