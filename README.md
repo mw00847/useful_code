@@ -6,4 +6,4 @@ A collection of small stand alone code
 
 * cosine_similarity.py compares the similarity of two FTIR spectra as a way of determining the closeness of an unknown to a reference.
 
-*run_all.sh a batch workflow for GROMACS MARTINI simulations, builds each blend with polyply, extends the box in z, minimises and equilibrates in GROMACS.
+* run_all.sh a batch workflow for GROMACS MARTINI simulations, builds each blend with polyply, extends the box in z, minimises and equilibrates in GROMACS.
